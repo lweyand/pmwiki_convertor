@@ -2,3 +2,6 @@
 __pycache__
 wiki.d
 .coverage
+wiki*/
+md*/
+dw*/
