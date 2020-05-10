@@ -156,7 +156,7 @@ if __name__ == '__main__':
     GROUP.add_argument('--file', type=str,
                        help='a file to convert')
     GROUP.add_argument('--directory', type=str,
-                       help='directory containing files to convert')
+                       help='directory containing PmWiki backup files')
     PARSER.add_argument('--output', type=str,
                         help='directory output to write converted files')
     PARSER.add_argument('--convertor', type=str,
