@@ -184,11 +184,11 @@ class DokuwikiConvertor(ConvertorInterface):
             # # Adding newlines
             converted = re.sub("\\{1}", "\\\\", converted)
 
+            # Remove trails <|[[\w]]|>
+            converted = re.sub("%3c\\|\\[\\[([a-zA-Z0-9_./])*\\]\\]\\|>", "", converted)
+
             # # Remove %enclosedstuffs%
             converted = re.sub("%.*%", "", converted)
-
-            # Remove trails <|[[\w]]|>
-            converted = re.sub("%3c\\|\\[\\[([a-zA-Z0-9_.])*\\]\\]\\|>", "", converted)
 
             # links syntax pmwiki = dokuwiki
             # horizontal line syntax pmwiki = dokuwiki
@@ -347,7 +347,10 @@ class MarkdownConvertor(ConvertorInterface):
             converted = re.sub("\\(\\:table.*\\:\\)", "", converted)
 
             # # Adding newlines
-            converted = re.sub("\\{1}", "\n\n", converted)
+            converted = re.sub("\\\\", "\n", converted)
+
+            # Remove trails <|[[\w]]|>
+            converted = re.sub("%3c\\|\\[\\[([a-zA-Z0-9_./])*\\]\\]\\|>", "", converted)
 
             # # Remove %enclosedstuffs%
             converted = re.sub("%.*%", "", converted)

@@ -90,6 +90,13 @@ class MarkdownConvertorTest(unittest.TestCase):
         self.assertIsNotNone(result, "result is None")
         self.assertEqual('##### Header', result)
 
+    def test_should_not_convert_exclamation_mark(self):
+        """ this is a test """
+        line = 'text=\nNot Header!! Sir'
+        result = self._convert_line(line)
+        self.assertIsNotNone(result, "result is None")
+        self.assertEqual('\nNot Header!! Sir', result)
+
     def test_should_convert_to_order_list1(self):
         """ this is a test """
         line = 'text=\n#list'
@@ -303,10 +310,24 @@ class MarkdownConvertorTest(unittest.TestCase):
         result = self._convert_line(line)
         self.assertIsNotNone(result, "result is None")
         self.assertEqual('', result)
+
+    def test_should_remove_trails_with_namespace1(self):
         line = "text=%3c|[[Trail.Page]]|>"
         result = self._convert_line(line)
         self.assertIsNotNone(result, "result is None")
         self.assertEqual('', result)
+
+    def test_should_remove_trails_with_namespace2(self):
+        line = "text=%3c|[[Trail/Page]]|>"
+        result = self._convert_line(line)
+        self.assertIsNotNone(result, "result is None")
+        self.assertEqual('', result)
+
+    def test_should_remove_trails_with_namespace3(self):
+        line = "text=%25trail%25 %3c|[[Main.Page]]|>%0a%0a"
+        result = self._convert_line(line)
+        self.assertIsNotNone(result, "result is None")
+        self.assertEqual(' \n\n', result)
 
 
     def test_should_remove_border_table(self):
