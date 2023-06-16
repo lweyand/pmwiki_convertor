@@ -260,6 +260,8 @@ class MarkdownConvertor(ConvertorInterface):
             converted = re.sub("%0a", "\n", converted)
             # Reencode %25 to %
             converted = re.sub("%25", "%", converted)
+            # Reencode %3c to <
+            converted = re.sub("%3c", "<", converted)
 
             # # Table Creations
             converted = re.sub("\\|{2}Border(.*)\n", "", converted, flags=re.IGNORECASE)
