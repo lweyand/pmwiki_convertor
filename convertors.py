@@ -201,9 +201,9 @@ class DokuwikiConvertor(ConvertorInterface):
             # [[Attach:file.ext|txt]]
             # [[Attach:file.ext]]
             # Attach:file.ext
-            converted = re.sub("\\[\\[\\(Attach\\:\\)(.*)\\.(\w{3})(\\|(.*))?\\]\\]", lambda m: self._to_attachment(m), converted)
-            converted = re.sub("\\[\\[Attach\\:(.*)\\.(\w{3})(\\|(.*))?\\]\\]", lambda m: self._to_attachment(m), converted)
-            converted = re.sub("Attach\\:(.*)\\.(\w{3})", lambda m: self._to_attachment(m), converted)
+            converted = re.sub("\\[\\[\\(Attach\\:\\)(.*)\\.(\\w{3})(\\|(.*))?\\]\\]", lambda m: self._to_attachment(m), converted)
+            converted = re.sub("\\[\\[Attach\\:(.*)\\.(\\w{3})(\\|(.*))?\\]\\]", lambda m: self._to_attachment(m), converted)
+            converted = re.sub("Attach\\:(.*)\\.(\\w{3})", lambda m: self._to_attachment(m), converted)
 
         return converted
 
@@ -365,9 +365,9 @@ class MarkdownConvertor(ConvertorInterface):
             # [[Attach:file.ext|txt]]
             # [[Attach:file.ext]]
             # Attach:file.ext
-            converted = re.sub("\\[\\[\\(Attach\\:\\)(.*)\\.(\w{3})(\\|(.*))?\\]\\]", lambda m: self._to_attachment(m, current_namespace), converted)
-            converted = re.sub("\\[\\[Attach\\:(.*)\\.(\w{3})(\\|(.*))?\\]\\]", lambda m: self._to_attachment(m, current_namespace), converted)
-            converted = re.sub("Attach\\:(.*)\\.(\w{3})", lambda m: self._to_attachment(m, current_namespace), converted)
+            converted = re.sub("\\[\\[\\(Attach\\:\\)(.*)\\.(\\w{3})(\\|(.*))?\\]\\]", lambda m: self._to_attachment(m, current_namespace), converted)
+            converted = re.sub("\\[\\[Attach\\:(.*)\\.(\\w{3})(\\|(.*))?\\]\\]", lambda m: self._to_attachment(m, current_namespace), converted)
+            converted = re.sub("Attach\\:(.*)\\.(\\w{3})", lambda m: self._to_attachment(m, current_namespace), converted)
 
             # links syntax [[link|text]] -> [text](link)
             converted = re.sub("\\[\\[http(.*)\\|(.*)\\]\\]", r"[\2](http\1)", converted)
