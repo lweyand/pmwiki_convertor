@@ -395,7 +395,7 @@ class MarkdownConvertorTest(unittest.TestCase):
         self.assertIsNotNone(result, "result is None")
         self.assertEqual('![txt](../media/file.ext) ', result)
 
-    def test_should_convert_syntax13_attachments(self):
+    def test_should_convert_syntax3_attachments(self):
         line = "text=Attach:file.ext "
         result = self._convert_line(line)
         self.assertIsNotNone(result, "result is None")
