@@ -260,6 +260,8 @@ class MarkdownConvertor(ConvertorInterface):
             converted = re.sub("%0a", "\n", converted)
             # Reencode %25 to %
             converted = re.sub("%25", "%", converted)
+            # Reencode %3c to <
+            converted = re.sub("%3c", "<", converted)
 
             # # Table Creations
             converted = re.sub("\\|{2}Border(.*)\n", "", converted, flags=re.IGNORECASE)
@@ -350,13 +352,10 @@ class MarkdownConvertor(ConvertorInterface):
             converted = re.sub("\\\\", "\n", converted)
 
             # Remove trails <|[[\w]]|>
-            converted = re.sub("%3c\\|\\[\\[([a-zA-Z0-9_./])*\\]\\]\\|>", "", converted)
+            converted = re.sub("<\\|\\[\\[([a-zA-Z0-9_./])*\\]\\]\\|>", "", converted)
 
             # # Remove %enclosedstuffs%
             converted = re.sub("%.*%", "", converted)
-
-            # Remove trails <|[[\w]]|>
-            converted = re.sub("%3c\\|\\[\\[([a-zA-Z0-9_./])*\\]\\]\\|>", "", converted)
 
             # Attachments
             # [[(Attach:)namespace/file.ext|txt]]

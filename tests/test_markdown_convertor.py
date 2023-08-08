@@ -35,6 +35,13 @@ class MarkdownConvertorTest(unittest.TestCase):
         self.assertIsNotNone(result, "result is None")
         self.assertEqual('foo%bar', result)
 
+    def test_should_convert_to_lowerthan(self):
+        """ this is a test """
+        line = 'text=foo%3cbar'
+        result = self._convert_line(line)
+        self.assertIsNotNone(result, "result is None")
+        self.assertEqual('foo<bar', result)
+
     def test_should_convert_to_h1(self):
         """ this is a test """
         line = 'text=\n!Header'
